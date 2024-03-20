@@ -5,6 +5,7 @@ import com.zaurtregulov.spring.springboot.spring_data_jpa.entity.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
@@ -19,16 +20,27 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public void saveEmployee(Employee employee) {
-        employeeRepository.saveEmployee(employee);
+        employeeRepository.save(employee);
     }
 
     @Override
     public Employee getEmployee(int id) {
-        return employeeDAO.getEmployee(id);
+        Employee employee = null;
+        Optional<Employee> optional = employeeRepository.findById(id);
+        if (optional.isPresent()) {
+            employee = optional.get();
+        }
+        return employee;
     }
 
     @Override
     public void deleteEmployee(int id) {
-        employeeDAO.deleteEmployee(id);
+        employeeRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Employee> findAllByName(String name) {
+        List<Employee> employees = employeeRepository.findAllByName(name);
+        return null;
     }
 }
