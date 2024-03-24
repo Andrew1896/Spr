@@ -1,11 +1,9 @@
 package com.zaurtregulov.spring.springboot.spring_data_jpa.controller;
 
-
 import com.zaurtregulov.spring.springboot.spring_data_jpa.entity.Employee;
 import com.zaurtregulov.spring.springboot.spring_data_jpa.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
